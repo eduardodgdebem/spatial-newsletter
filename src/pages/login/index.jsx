@@ -1,51 +1,56 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
-import CardContent from '@mui/material/CardContent';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import CardContent from "@mui/material/CardContent";
+import LoginIcon from '@mui/icons-material/Login';import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
 
-import './login.css';
+import "./login.css";
 
 function Login() {
   const [user, setUser] = useState({});
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleLogin(e) {
     e.preventDefault();
 
     setUser({
       username: username,
-      password: password
-    })
+      password: password,
+    });
   }
 
   return (
     <div className="container">
-      <Card
-        className='login'
-      >
+      <Card className="login">
         <h1>Login</h1>
         <TextField
-          className='login-input'
-          margin='dense'
+          className="login-input"
+          margin="dense"
           value={username}
-          label='Usuário'
-          onChange={e => setUsername(e.target.value)}
-          variant='outlined'
-          type='text'
+          label="Usuário"
+          onChange={(e) => setUsername(e.target.value)}
+          variant="outlined"
+          type="text"
         />
-        <TextField className='login-input'
-          margin='dense'
+        <TextField
+          className="login-input"
+          margin="dense"
           value={password}
-          label='Senha'
-          onChange={e => setPassword(e.target.value)}
-          variant='outlined'
-          type='password'
+          label="Senha"
+          onChange={(e) => setPassword(e.target.value)}
+          variant="outlined"
+          type="password"
         />
-        <Button variant="contained" type='submit' color="success">Login</Button>
-        <Button variant="contained"><Link to="/register">Cadastrar-se</Link></Button>
+        <Button variant="contained" type="submit" color="primary">
+          Login &nbsp;
+          <LoginIcon />
+        </Button>
+        <br />
+        <span>
+          Não possui um login? <Link to="/register">Cadastre-se</Link>
+        </span>
       </Card>
     </div>
 
@@ -69,6 +74,6 @@ function Login() {
     //     <Link to="/register">Cadastrar-se</Link>
     //   </form>
     // </div>
-
   );
-} export default Login;
+}
+export default Login;
