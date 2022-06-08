@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
-import LoginIcon from '@mui/icons-material/Login';import Card from "@mui/material/Card";
+import LoginIcon from "@mui/icons-material/Login";
+import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 
 import "./login.css";
@@ -43,7 +44,7 @@ function Login() {
           variant="outlined"
           type="password"
         />
-        <Button variant="contained" type="submit" color="primary">
+        <Button onClick={handleLogin} variant="contained" color="primary">
           Login &nbsp;
           <LoginIcon />
         </Button>
