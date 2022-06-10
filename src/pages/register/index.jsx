@@ -19,7 +19,14 @@ function Register() {
 
   function handleRegister(e) {
     e.preventDefault();
-    debugger;
+
+    setUser({
+      username: username,
+      password: password,
+      email: email,
+      name: name,
+      age: age,
+    });
   }
 
   return (
