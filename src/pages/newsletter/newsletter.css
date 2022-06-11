@@ -1,0 +1,35 @@
+.main-container {
+  padding: 3rem;
+}
+
+.news-container {
+  width: 100%;
+}
+
+.news-card img {
+  margin: 1rem;
+  max-width: 30rem;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+
+.news-card img:hover {
+  max-width: 32rem;
+  filter: grayscale(0%);
+}
+
+.flex-left {
+  display: flex;
+}
+
+.flex-rigth {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="flex-"] {
+    flex-direction: column;
+  }
+}
