@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #b0c4de;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height: 60vh;
+}
+
+.login-input {
+  width: 80%;
+}
+
+.login Button {
+  width: 80%;
+  margin: 0.25rem 0rem;
+}
+
+Button a {
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}

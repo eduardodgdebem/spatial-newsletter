@@ -10,5 +10,4 @@ function App() {
     <RoutesApp />
   )
 }
-
 export default App
