@@ -11,7 +11,7 @@ const NewsLetterPage = () => {
 
   return (
     <div className="main-container">
-      <h1>Teste</h1>
+      <h1>JORNAL</h1>
       <div className="news-container">
         {news.map((news, i) => {
           return <NewsContainer news={news} key={i} index={i}></NewsContainer>;
@@ -23,16 +23,19 @@ const NewsLetterPage = () => {
 
 const NewsContainer = (props) => {
   const { news, index } = props;
-    return (
-      <article className="news-card">
-        <h2>{news.title}</h2>
-        <div className={index % 2 === 0 ? "flex-left" : "flex-rigth"}>
-          <img src={news.urlToImage} alt="" />
-          <p>{news.content}</p>
+  return (
+    <article className="news-card">
+      <div className={index % 2 === 0 ? "flex-left" : "flex-rigth"}>
+        <div>
+          <h2 className="title">{news.title}</h2>
+          <p className="paragraph">{news.content.split("[").shift()}</p>
         </div>
-      </article>
-    );
-  
+        <a href={news.url}>
+          <img src={news.urlToImage} alt="Imagem da notifica" />
+        </a>
+      </div>
+    </article>
+  );
 };
 
 const test = async (setNews) => {
