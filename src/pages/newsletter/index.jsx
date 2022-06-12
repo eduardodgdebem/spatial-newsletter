@@ -6,12 +6,12 @@ const NewsLetterPage = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    test(setNews);
+    getNews(setNews);
   }, []);
 
   return (
     <div className="main-container">
-      <h1>JORNAL</h1>
+      <NewsHeader />
       <div className="news-container">
         {news.map((news, i) => {
           return <NewsContainer news={news} key={i} index={i}></NewsContainer>;
@@ -21,27 +21,38 @@ const NewsLetterPage = () => {
   );
 };
 
+const NewsHeader = () => {
+  return (
+    <header className="main-header-container">
+      <h1>JORNAL</h1>
+    </header>
+  );
+};
+
 const NewsContainer = (props) => {
   const { news, index } = props;
   return (
-    <article className="news-card">
+    <article className="news-card" onClick={() => goToNewsSite(news.url)}>
       <div className={index % 2 === 0 ? "flex-left" : "flex-rigth"}>
-        <div>
+        <div className="text-container">
           <h2 className="title">{news.title}</h2>
           <p className="paragraph">{news.content.split("[").shift()}</p>
         </div>
-        <a href={news.url}>
-          <img src={news.urlToImage} alt="Imagem da notifica" />
-        </a>
+        <img src={news.urlToImage} alt="Imagem da notifica" />
       </div>
     </article>
   );
 };
 
-const test = async (setNews) => {
+const getNews = async (setNews) => {
   const result = await getAllSpaceNews();
   console.log(result.data.articles);
   setNews(result.data.articles.filter((news) => news.content));
 };
+
+const goToNewsSite = (link) => {
+  console.log(link)
+  window.open(link, "_blank");
+}
 
 export default NewsLetterPage;

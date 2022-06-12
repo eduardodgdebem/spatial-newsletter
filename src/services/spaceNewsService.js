@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getAllSpaceNews = (path = '') => {
+export const getAllSpaceNews = () => {
   return axios.request({
 		method: 'GET',
 		url: 'https://newsapi.org/v2/top-headlines?' +

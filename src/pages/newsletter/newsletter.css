@@ -3,48 +3,28 @@ root {
 }
 
 .main-container {
-  margin: 0;
-  padding: 0;
+  background-color: #b0c4de;
 }
 
-.news-container {
+.main-header-container {
+  width: 100%;
+}
+
+.main-header-container > h1 {
+  margin: 0 10px;
+}
+
+.news-card {
   width: 100%;
   transition: all 400ms;
 }
 
-.news-card:hover {
-  background: linear-gradient(-45deg, rgba(238, 119, 82, 1), rgba(231, 60, 126, 1), rgba(35, 166, 213, 1), rgba(35, 213, 171, 1));
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
 .news-card img {
-  margin: .5rem;
+  margin: 0.5rem;
   max-width: 30rem;
   object-fit: cover;
   filter: grayscale(100%);
   transition: 0.5s;
-}
-
-.news-card img:hover {
-  max-width: 32rem;
-  filter: grayscale(0%);
-}
-
-.paragraph {
-  margin: 1rem;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .flex-left {
@@ -58,21 +38,62 @@ root {
   justify-content: flex-end;
 }
 
+.text-container {
+  width: 50%;
+}
+
 .title {
   font-weight: bold;
   margin: 1rem;
   text-transform: uppercase;
-  width: 60%;
+}
+
+.news-card:hover {
+  background: linear-gradient(
+    -45deg,
+    rgb(150, 238, 82),
+    rgb(60, 231, 106),
+    rgba(35, 166, 213, 1),
+    rgba(35, 213, 171, 1)
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: rgb(255, 255, 255);
+}
+
+.news-card:hover img {
+  max-width: 32rem;
+  filter: grayscale(0%);
+}
+
+.paragraph {
+  margin: 1rem;
 }
 
 @media only screen and (max-width: 900px) {
   [class*="flex-"] {
     flex-direction: column;
   }
-  .news-card img  {
+  .news-card img {
     max-width: 60vw;
+    margin: 5px auto;
   }
-  .news-card:hover {
+  .news-card:hover img {
     max-width: 65vw;
+  }
+  .text-container {
+    width: 100%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
