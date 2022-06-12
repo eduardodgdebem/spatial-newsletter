@@ -27,6 +27,7 @@ function Register() {
   }, []);
 
   useEffect(() => {
+    console.log(users)
     localStorage.setItem("@users", JSON.stringify(users));
   }, [users])
 
@@ -53,16 +54,13 @@ function Register() {
 
     setUsers([...users, user]);
 
-    alert("Usuário cadastrado com sucesso!");
-
     setUser({});
     setUsername('');
     setPassword('');
     setEmail('');
     setName('');
     setAge(0);
-
-    navigate('/');
+    alert("Usuário cadastrado com sucesso!");
   }
 
   return (
@@ -135,5 +133,9 @@ function Register() {
       </Card>
     </div>
   );
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 export default Register;

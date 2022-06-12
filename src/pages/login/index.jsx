@@ -41,14 +41,12 @@ function Login() {
     if (userFound.password !== password) {
       return alert("Senha incorreta!");
     }
-
-    alert("Usuário logado com sucesso!");
-
+    
     setUser({});
     setUsername('');
     setPassword('');
 
-    navigate('/register')
+    navigate('/newsletter')
   }
 
   return (
@@ -75,7 +73,7 @@ function Login() {
           type="password"
           required
         />
-        <Button onClick={handleLogin} variant="contained" color="primary">
+        <Button onClick={handleLogin} variant="contained" color="primary" className="gradient-hover">
           Login &nbsp;
           <LoginIcon />
         </Button>
