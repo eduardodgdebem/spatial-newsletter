@@ -27,7 +27,6 @@ function Register() {
   }, []);
 
   useEffect(() => {
-    console.log(users)
     localStorage.setItem("@users", JSON.stringify(users));
   }, [users])
 

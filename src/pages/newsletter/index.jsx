@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllSpaceNews } from "../../services/spaceNewsService";
+import { getAllSpaceNews } from "../../helpers/spaceNewsService";
 import "./newsletter.css";
 
 const NewsLetterPage = () => {
@@ -12,11 +12,11 @@ const NewsLetterPage = () => {
   return (
     <main className="main-container">
       <NewsHeader />
-      <div className="news-container">
+      <artice className="news-container">
         {news.map((news, i) => {
           return <NewsContainer news={news} key={i} index={i}></NewsContainer>;
         })}
-      </div>
+      </artice>
     </main>
   );
 };
@@ -34,14 +34,17 @@ const NewsContainer = (props) => {
   const isEven = index % 2 === 0;
 
   return (
-    <article className="news-card gradient-hover" onClick={() => goToNewsSite(news.url)}>
-      <div className={isEven ? "flex-left" : "flex-rigth"}>
-        <div className="text-container">
-          <h2 className="title">{news.title}</h2>
-          <p className="paragraph">{news.content.split("[").shift()}</p>
-        </div>
-        <img src={news.urlToImage} alt="Imagem da notícia" />
-      </div>
+    <article
+      className={
+        "news-card gradient-hover" + (isEven ? " flex-left" : " flex-rigth") 
+      }
+      onClick={() => goToNewsSite(news.url)}
+    >
+      <section className="text-container">
+        <h2 className="title">{news.title}</h2>
+        <p className="paragraph">{news.content.split("[").shift()}</p>
+      </section>
+      <img src={news.urlToImage} alt="Imagem da notícia" />
     </article>
   );
 };
@@ -53,6 +56,6 @@ const getNews = async (setNews) => {
 
 const goToNewsSite = (link) => {
   window.open(link, "_blank");
-}
+};
 
 export default NewsLetterPage;
