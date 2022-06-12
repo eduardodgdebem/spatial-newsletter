@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import CardContent from "@mui/material/CardContent";
-import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
@@ -15,18 +13,56 @@ function Register() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [age, setAge] = useState();
+  const [age, setAge] = useState(0);
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userStorage = localStorage.getItem("@users");
+
+    if (userStorage) {
+      setUsers(JSON.parse(userStorage));
+    }
+
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("@users", JSON.stringify(users));
+  }, [users])
 
   function handleRegister(e) {
     e.preventDefault();
 
-    setUser({
+    if (!username || !password || !email || !name || !age) return alert("Preencha todos os campos");
+
+    const user = {
       username: username,
       password: password,
       email: email,
       name: name,
       age: age,
-    });
+    }
+
+    setUser(user);
+
+    const userFound = users.find((user) => user.username === username);
+
+    if (userFound) {
+      return alert("Usuário já existente!");
+    }
+
+    setUsers([...users, user]);
+
+    alert("Usuário cadastrado com sucesso!");
+
+    setUser({});
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    setName('');
+    setAge(0);
+
+    navigate('/');
   }
 
   return (
@@ -41,6 +77,7 @@ function Register() {
           onChange={(e) => setName(e.target.value)}
           variant="outlined"
           type="text"
+          required
         />
         <TextField
           className="login-input"
@@ -50,6 +87,7 @@ function Register() {
           onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
           type="email"
+          required
         />
         <TextField
           className="login-input"
@@ -59,6 +97,7 @@ function Register() {
           onChange={(e) => setAge(e.target.value)}
           variant="outlined"
           type="number"
+          required
         />
         <TextField
           className="login-input"
@@ -68,6 +107,7 @@ function Register() {
           onChange={(e) => setUsername(e.target.value)}
           variant="outlined"
           type="text"
+          required
         />
         <TextField
           className="login-input"
@@ -77,6 +117,7 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
           variant="outlined"
           type="password"
+          required
         />
         <Button
           onClick={handleRegister}
@@ -93,45 +134,6 @@ function Register() {
         </span>
       </Card>
     </div>
-
-    // <div>
-    //   <h1>Tela de Cadastro</h1>
-    //   <form onSubmit={handleRegister}>
-    //     <label>Nome</label><br />
-    //     <input
-    //       value={name}
-    //       placeholder="Digite seu nome"
-    //       onChange={e => setName(e.target.value)}
-    //     /><br />
-    //     <label>Email</label><br />
-    //     <input
-    //       placeholder='Digite seu email'
-    //       value={email}
-    //       onChange={e => setEmail(e.target.value)}
-    //     /><br />
-    //     <label>Idade</label><br />
-    //     <input
-    //       placeholder='Digite sua idade'
-    //       value={age}
-    //       onChange={e => setAge(e.target.value)}
-    //     /><br />
-    //     <label>Usuário</label><br />
-    //     <input
-    //       placeholder='Digite seu usuário'
-    //       value={username}
-    //       onChange={e => setUsername(e.target.value)}
-    //     /><br />
-    //     <label>Senha</label><br />
-    //     <input
-    //       type="password"
-    //       placeholder='Digite sua senha'
-    //       value={password}
-    //       onChange={e => setPassword(e.target.value)}
-    //     /><br />
-    //     <button type='submit'>Cadastrar-se</button><br />
-    //     <Link to="/">Voltar ao Login</Link>
-    //   </form>
-    // </div>
   );
 }
 export default Register;

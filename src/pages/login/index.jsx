@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import CardContent from "@mui/material/CardContent";
 import LoginIcon from "@mui/icons-material/Login";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
@@ -12,14 +11,44 @@ function Login() {
   const [user, setUser] = useState({});
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
-  function handleLogin(e) {
-    e.preventDefault();
+  useEffect(() => {
+    const userStorage = localStorage.getItem("@users");
 
-    setUser({
+    if (userStorage) {
+      setUsers(JSON.parse(userStorage));
+    }
+  }, [])
+
+  function handleLogin() {
+    if (!username || !password) return alert("Preencha todos os campos");
+
+    const user = {
       username: username,
       password: password,
-    });
+    }
+
+    setUser(user);
+
+    const userFound = users.find((user) => user.username === username);
+
+    if (!userFound) {
+      return alert("Usuário não encontrado!");
+    }
+
+    if (userFound.password !== password) {
+      return alert("Senha incorreta!");
+    }
+
+    alert("Usuário logado com sucesso!");
+
+    setUser({});
+    setUsername('');
+    setPassword('');
+
+    navigate('/register')
   }
 
   return (
@@ -34,6 +63,7 @@ function Login() {
           onChange={(e) => setUsername(e.target.value)}
           variant="outlined"
           type="text"
+          required
         />
         <TextField
           className="login-input"
@@ -43,6 +73,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           variant="outlined"
           type="password"
+          required
         />
         <Button onClick={handleLogin} variant="contained" color="primary">
           Login &nbsp;
@@ -54,27 +85,6 @@ function Login() {
         </span>
       </Card>
     </div>
-
-    // <div>
-    //   <h1>Login</h1>
-    //   <form onSubmit={handleLogin}>
-    //     <label>Usuário</label><br />
-    //     <input
-    //       value={username}
-    //       placeholder="Digite seu usuário"
-    //       onChange={e => setUsername(e.target.value)}
-    //     /><br />
-    //     <label>Senha</label><br />
-    //     <input
-    //       type="password"
-    //       placeholder='Digite sua senha'
-    //       value={password}
-    //       onChange={e => setPassword(e.target.value)}
-    //     /><br />
-    //     <button type='submit'>Login</button><br />
-    //     <Link to="/register">Cadastrar-se</Link>
-    //   </form>
-    // </div>
   );
 }
 export default Login;
