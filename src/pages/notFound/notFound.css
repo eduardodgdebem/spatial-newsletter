@@ -1,0 +1,30 @@
+.notfound-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.notfound-card {
+    width: 500px;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 0, 0);
+}
+
+.notfound-card > h1{
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    font-family: 'roboto', serif;
+    color: red;
+    text-transform: uppercase;
+}
+
+.notfound-card > Button {
+    margin: 1rem;
+}
