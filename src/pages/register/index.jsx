@@ -27,7 +27,6 @@ function Register() {
   }, []);
 
   useEffect(() => {
-    console.log(users)
     localStorage.setItem("@users", JSON.stringify(users));
   }, [users])
 
@@ -128,7 +127,7 @@ function Register() {
         </Button>
         <br />
         <span>
-          <Link to="/">Voltar para Login</Link>
+          <Link to="/login">Voltar para Login</Link>
         </span>
       </Card>
     </div>

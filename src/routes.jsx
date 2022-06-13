@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/login";
 import NewsLetterPage from "./pages/newsletter";
@@ -8,9 +8,10 @@ function RoutesApp() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/newsletter" element={<NewsLetterPage/>}></Route>
+        <Route path="/newsletter" element={<NewsLetterPage />}></Route>
+        <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );
