@@ -16,6 +16,7 @@
 .news-card {
   width: 100%;
   transition: all 400ms;
+  color: rgb(206, 206, 206);
 }
 
 .news-card img {
@@ -76,14 +77,3 @@
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
