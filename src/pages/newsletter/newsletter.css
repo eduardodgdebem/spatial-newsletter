@@ -48,8 +48,13 @@
   text-transform: uppercase;
 }
 
+.paragraph {
+  margin: 1rem;
+}
+
 .news-card:hover {
   color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .news-card:hover img {
@@ -57,9 +62,6 @@
   filter: grayscale(0%);
 }
 
-.paragraph {
-  margin: 1rem;
-}
 
 @media only screen and (max-width: 800px) {
   [class*="flex-"] {
