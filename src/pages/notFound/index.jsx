@@ -8,9 +8,9 @@ const NotFound = () => {
   const redirectToLogin = () => {
     navigate("/");
   };
-  
+
   return (
-    <main>
+    <main className="notfound-main">
       <Card className="notfound-card">
         <h1>Página não encontrada!</h1>
         <Button

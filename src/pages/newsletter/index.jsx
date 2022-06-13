@@ -12,11 +12,11 @@ const NewsLetterPage = () => {
   return (
     <main className="main-container">
       <NewsHeader />
-      <artice className="news-container">
+      <article className="news-container">
         {news.map((news, i) => {
           return <NewsContainer news={news} key={i} index={i}></NewsContainer>;
         })}
-      </artice>
+      </article>
     </main>
   );
 };
