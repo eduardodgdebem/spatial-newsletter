@@ -5,7 +5,7 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 
-import "../styles/cardPage.css";
+import "../../styles/cardPage.css";
 
 function Register() {
   const [user, setUser] = useState({});
