@@ -3,14 +3,29 @@
 }
 
 .main-header-container {
+  position: sticky;
+  top: 0;
+  background-color: var(--background-color);
+  z-index: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .main-header-container > h1 {
   margin: 5px 10px;
   font-size: 3rem;
+}
+
+.logout-button {
+  position: fixed;
+  right:1rem;
+  color: white;
+  text-decoration: none;
+  background-color: rgb(60, 231, 106, 0.5);
+  padding: 7px 15px;
+  border-radius: 0.2rem;
 }
 
 .news-card {
@@ -60,6 +75,10 @@
 .news-card:hover img {
   max-width: 32rem;
   filter: grayscale(0%);
+}
+
+.logout-button:hover {
+  cursor: pointer;
 }
 
 
