@@ -5,7 +5,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 
-import "./login.css";
+import "../styles/cardPage.css";
 
 function Login() {
   const [user, setUser] = useState({});

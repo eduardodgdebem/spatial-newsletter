@@ -5,7 +5,7 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 
-import "../login/login.css";
+import "../styles/cardPage.css";
 
 function Register() {
   const [user, setUser] = useState({});
@@ -15,7 +15,6 @@ function Register() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const userStorage = localStorage.getItem("@users");
