@@ -14,7 +14,8 @@
     align-items: center;
     margin: 10px;
     width: 500px;
-    height: 60vh;
+    padding: 20px;
+    min-height: 60vh;
   }
   
   .login-input {
