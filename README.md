@@ -1,5 +1,5 @@
 Grupo: 
-    Eduardo e Adair
+    Eduardo Goulart de Bem e Adair Locks Grassi
 
 Link do repositorio:
     'https://github.com/eduardodgdebem/spatial-newsletter'
