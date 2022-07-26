@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllSpaceNews } from "../../helpers/spaceNewsService";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+
 import "./newsletter.css";
 
 const NewsLetterPage = () => {
@@ -25,6 +28,10 @@ const NewsHeader = () => {
   return (
     <header className="main-header-container">
       <h1>Jornal.</h1>
+
+      <Link to="/login" className="logout-button gradient-hover">
+        Sair
+      </Link>
     </header>
   );
 };
@@ -36,7 +43,7 @@ const NewsContainer = (props) => {
   return (
     <article
       className={
-        "news-card gradient-hover" + (isEven ? " flex-left" : " flex-rigth") 
+        "news-card gradient-hover" + (isEven ? " flex-left" : " flex-rigth")
       }
       onClick={() => goToNewsSite(news.url)}
     >
